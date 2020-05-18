@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+
+@{
+    ViewBag.Title = "Filter By Loan CopyNumber";
+}
+
+    <h2>Filter By Loan CopyNumber</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Member Name
+        </th>
+        <th>
+            Date of Issue
+        </th>
+
+        <th>
+            Due Date
+        </th>
+        <th> Actual Returned Date</th>
+        <th> DVD Name</th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Members.FirstName)
+        @Html.DisplayFor(modelItem => item.Members.LastName)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.IssueDate)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ReturnDate)
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ActualReturnedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+    </td>
+</tr>
+        break;
+    }
+
+</table>

@@ -1,0 +1,80 @@
+﻿@model DVDRentalSystem.Models.Loan
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DVDDetails.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DVDDetails.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FineAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FineAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CopyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CopyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualReturnedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualReturnedDate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

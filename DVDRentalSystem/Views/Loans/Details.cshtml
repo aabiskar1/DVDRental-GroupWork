@@ -1,0 +1,74 @@
+﻿@model DVDRentalSystem.Models.Loan
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DVDDetails.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DVDDetails.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Members.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Members.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IssueDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IssueDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReturnDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReturnDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FineAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FineAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CopyId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CopyId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ActualReturnedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ActualReturnedDate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.LoanId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

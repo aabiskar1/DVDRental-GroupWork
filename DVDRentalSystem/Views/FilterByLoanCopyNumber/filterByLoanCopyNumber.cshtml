@@ -1,0 +1,15 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+
+@{
+    ViewBag.Title = "Filter By Loan CopyNumber";
+}
+
+<h2>filterByLoanCopyNumber</h2>
+
+
+<form action="/FilterByLoanCopyNumberPost/filterByLoanCopyNumberPost" method="get">
+    @Html.DropDownList("DVDDetails", new SelectList(ViewBag.MovieLists, null, null), null, null)
+    <button type="submit">Submit</button>
+</form>
+
+

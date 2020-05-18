@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.CastMembers>
+
+@{
+    ViewBag.Title = "FilterTitleByLastName";
+}
+
+<h2>FilterTitleByLastName</h2>
+    <form action="/Report/FilterTitleByLastName" method="get">
+        @Html.DropDownList("LastName", new SelectList(ViewBag.LastName, "LastName", "LastName"), null, null)
+        <button type="submit">Submit</button>
+    </form>
+
+
+    @if(Model!= null){
+
+    <table class="table">
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+
+            <th>
+                DVD Title
+            </th>
+            <th> DVD Cover</th>
+            <th> Loan Status</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+        </td>
+
+        <td>
+            <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100px" height="100px" />
+        </td>
+        <td>
+            @if (item.DVDDetails.LoanStatus)
+            {
+                <p>Loaned</p>
+            }
+            else
+            {
+                <p>Not on Loan</p>}
+        </td>
+
+    </tr>
+        }
+        
+
+    </table>
+}
+
+
+
+
+
+

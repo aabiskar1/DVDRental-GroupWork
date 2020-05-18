@@ -1,0 +1,133 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Producer>
+
+@{
+    ViewBag.Title = "filterProducerByDVDCast";
+}
+
+<h2>filterProducerByDVDCast</h2>
+
+
+
+@if (Model != null)
+{
+
+<table class="table">
+    <tr>
+
+        <th>
+            DvdName
+        </th>
+
+        <th>
+            Release date
+        </th>
+
+        <th>
+            Producer Name
+        </th>
+        <th>
+            Studio
+        </th>
+
+        <th>
+            Cast Name
+        </th>
+
+        <th></th>
+    </tr>
+    @{
+        var count = 0;
+        var previous = 0;
+
+    }
+
+    @{System.Diagnostics.Debug.WriteLine(Model.ToList().Count());
+    }
+
+    @foreach (var item in Model)
+    {
+       
+        if (@count == 0)
+        {
+
+            { count++; }
+            { previous = item.DVDDetails.DVDDetailsId; }
+            System.Diagnostics.Debug.WriteLine("it is in if");
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Studio_name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+                    @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+                </td>
+
+            </tr>
+        }
+        else
+        {
+            System.Diagnostics.Debug.WriteLine(previous + "**" + item.DVDDetails.DVDDetailsId + "im the condition");
+            { count++; }
+            if (previous == item.DVDDetails.DVDDetailsId)
+            {
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+       
+
+
+            }
+            else
+            {
+                previous = item.DVDDetails.DVDDetailsId;
+                            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                    @Html.DisplayFor(modelItem => item.LastName)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Studio_name)
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+                    @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+                </td>
+
+            </tr>
+            }
+
+
+        }
+
+    }
+
+
+</table>
+}
