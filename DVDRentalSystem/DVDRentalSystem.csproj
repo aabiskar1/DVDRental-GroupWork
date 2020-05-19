@@ -255,6 +255,8 @@
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ProducersController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReturnDVDController.cs" />
+    <Compile Include="Controllers\ReturnDVDPostController.cs" />
     <Compile Include="Controllers\UserAndRolesController.cs" />
     <Compile Include="DataContext\Data\DVDRentalSystemContext.cs" />
     <Compile Include="Global.asax.cs">
@@ -446,6 +448,9 @@
     <Content Include="Views\LoanTypes\Details.cshtml" />
     <Content Include="Views\LoanTypes\Edit.cshtml" />
     <Content Include="Views\LoanTypes\Index.cshtml" />
+    <Content Include="Views\ReturnDVD\ReturnDVD.cshtml" />
+    <Content Include="Views\ReturnDVDPost\CopyIdList.cshtml" />
+    <Content Include="Views\ReturnDVDPost\ShowReturnDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

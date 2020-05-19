@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+
+@{
+    ViewBag.Title = "CopyIdList";
+}
+
+<h2>DVD Copy on Loan List</h2>
+
+<form action="/ReturnDVDPost/ShowReturnDetails" method="get">
+    @Html.DropDownList("CopyId", new SelectList(ViewBag.CopyId, "CopyId"), null, null)
+    <button type="submit">Submit</button>
+    </form>

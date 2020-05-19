@@ -4,7 +4,7 @@
     ViewBag.Title = "Filter By Loan CopyNumber";
 }
 
-    <h2>Filter By Loan CopyNumber</h2>
+<h2>Filter By Loan CopyNumber</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -31,27 +31,27 @@
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Members.FirstName)
-        @Html.DisplayFor(modelItem => item.Members.LastName)
-    </td>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Members.FirstName)
+                @Html.DisplayFor(modelItem => item.Members.LastName)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.IssueDate)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.ReturnDate)
-    </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
 
-    <td>
-        @Html.DisplayFor(modelItem => item.ActualReturnedDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
-    </td>
-</tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualReturnedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+            </td>
+        </tr>
         break;
     }
 

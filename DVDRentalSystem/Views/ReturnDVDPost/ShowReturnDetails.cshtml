@@ -1,0 +1,109 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+
+@{
+    ViewBag.Title = "ShowReturnDetails";
+}
+
+<h2>ShowReturnDetails</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+
+        <th>
+            DVD Title
+        </th>
+        <th>
+            Member Name
+        </th>
+
+        <th>
+            Issue Date
+        </th>
+
+        <th> Return Date</th>
+        <th> Actual Return Date</th>
+
+        <th>Standard Charge</th>
+
+        <th>Fine Amount</th>
+
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Members.FirstName)
+                @Html.DisplayFor(modelItem => item.Members.LastName)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.IssueDate)
+
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualReturnedDate)
+
+
+
+
+            </td>
+
+            <td>
+
+                @{var dvdCharge = item.LoanCharge;
+                    double days = (Convert.ToDateTime(item.ReturnDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
+                    var finalCharge = days * dvdCharge;
+
+                }
+                <p>@finalCharge</p>
+            </td>
+
+            <td>
+                @{var fineAmount = item.FineAmount;
+                    double fineDays = (Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(item.ReturnDate)).TotalDays;
+                    if (fineDays > 0)
+                    {
+
+                        var finecharge = fineDays * fineAmount;
+                        <p>@finecharge</p>
+                    }
+                    else
+                    {
+                        <p>0</p>
+                    }
+                }
+
+            </td>
+
+            <td>
+            </td>
+        </tr>
+         }
+    </table>
+
+
+<form action="/ReturnDVDPost/ReturnDVDFinal" method="get">
+    <button type="submit">Return DVD</button>
+
+</form>
+
+
+
