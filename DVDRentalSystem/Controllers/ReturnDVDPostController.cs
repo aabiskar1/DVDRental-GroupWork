@@ -22,7 +22,10 @@ namespace DVDRentalSystem.Controllers
         public ActionResult CopyIdList(string dvdName)
         {
             dvdName = HttpContext.Request["DVDDetails"];
-            var copyNumber = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName).Where(x => x.ActualReturnedDate == null).Select(x => x.CopyId);
+            var copyNumber = dbCon.Loans.Include("DVDDetails")
+                .Where(x => x.DVDDetails.Name == dvdName)
+                .Where(x => x.ActualReturnedDate == null)
+                .Select(x => x.CopyId);
             ViewBag.CopyId = copyNumber.ToList();
 
 
@@ -41,7 +44,14 @@ namespace DVDRentalSystem.Controllers
             TempData["ReturnDVDName"] = dvdName;
             TempData["ReturnCopyID"] = copyid;
 
-            var loanReport = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName).Where(x=> x.ActualReturnedDate== null);
+            int intCopyId = int.Parse(copyid);
+
+            var loanReport = dbCon.Loans.Include("DVDDetails")
+                .Where(x => x.DVDDetails.Name == dvdName)
+                .Where(x => x.CopyId == intCopyId)
+                .Where(x=> x.ActualReturnedDate== null)
+              
+                ;
 
 
 

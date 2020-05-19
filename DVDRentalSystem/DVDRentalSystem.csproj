@@ -242,6 +242,7 @@
     <Compile Include="Controllers\CastMembersController.cs" />
     <Compile Include="Controllers\DVDDetailsController.cs" />
     <Compile Include="Controllers\DVDMembersController.cs" />
+    <Compile Include="Controllers\FilterByAlphabaticalMembersController.cs" />
     <Compile Include="Controllers\FilterByLoanCopyNumberController.cs" />
     <Compile Include="Controllers\FilterByLoanCopyNumberPostController.cs" />
     <Compile Include="Controllers\FilterByProducerDVDReleaseCastController.cs" />
@@ -451,6 +452,7 @@
     <Content Include="Views\ReturnDVD\ReturnDVD.cshtml" />
     <Content Include="Views\ReturnDVDPost\CopyIdList.cshtml" />
     <Content Include="Views\ReturnDVDPost\ShowReturnDetails.cshtml" />
+    <Content Include="Views\FilterByAlphabaticalMembers\filterByName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

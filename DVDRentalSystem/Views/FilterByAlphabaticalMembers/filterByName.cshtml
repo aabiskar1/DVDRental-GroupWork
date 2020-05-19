@@ -1,0 +1,107 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "filterByName";
+}
+
+<h2>Filter Members with Alphabetical Order</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Member Name
+        </th>
+        <th>
+            Membership Category
+        </th>
+        <th>
+            Address
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Date of Birth
+        </th>
+        <th>
+            DVD  on Loan (If any)
+        </th>
+
+        <th>
+            Message
+        </th>
+
+        <th></th>
+    </tr>
+
+
+
+
+
+    @{int count = 0; }
+
+        @foreach (var item in Model.Members)
+        {
+            count = 0;
+<tr>
+    <td>
+        @item.FirstName
+        @item.LastName
+    </td>
+    <td>
+        @item.MemberCategory.Name
+    </td>
+    <td> @item.Address </td>
+    <td>
+        @item.Phone
+    </td>
+    <td>
+        @item.DateOfBirth
+    </td>
+
+    @{foreach (var x in Model.Loans)
+        {
+            if (item.MemberId == x.MemberId && x.ActualReturnedDate == null)
+            {
+                count++;
+            }
+
+        }
+
+
+
+    }
+    <td> @count   </td>
+
+    @{var totalLoan = @item.MemberCategory.TotalLoan;}
+
+
+  
+
+    @{
+        if (count > totalLoan)
+        {
+            <td>
+               Loaned DVD count excceds allowed limit
+
+            </td>
+        }
+        else
+        {
+            <td>
+            </td>
+        }
+
+
+    }
+
+
+
+
+</tr>
+        }
+
+
+
+    </table>

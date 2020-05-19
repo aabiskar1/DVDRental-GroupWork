@@ -64,7 +64,9 @@ namespace DVDRentalSystem.Controllers
 
                 //Code for Category Limit
                 int memberCategoryId = 0;
-                var userCategoryList = db.Loans.Include("Members").Include("MemberCategory").Where(x => x.Members.MemberId == loan.MemberId).Select(x => x.Members.MemberCategoryId).ToList();
+                var userCategoryList = db.Members.Include("MemberCategory")
+                    .Where(x => x.MemberId == loan.MemberId)
+                    .Select(x => x.MemberCategoryId).ToList();
                 foreach (var val in userCategoryList)
                 {
                     memberCategoryId = val;
@@ -72,9 +74,11 @@ namespace DVDRentalSystem.Controllers
 
 
                 var loanedCopiesCount = int.Parse(db.Loans.Include("Members")
-                            .Where(x => x.Members.MemberId == x.MemberId)
+                            .Where(x => x.Members.MemberId == loan.MemberId)
                             .Where(x => x.ActualReturnedDate == null).Count().ToString());
-                var categoryLimitList = db.Members.Include("MemberCategory").Where(x => x.MemberCategory.MemberCategoryId == memberCategoryId).Select(x => x.MemberCategory.TotalLoan).ToList();
+                var categoryLimitList = db.Members.Include("MemberCategory")
+                    .Where(x => x.MemberCategory.MemberCategoryId == memberCategoryId)
+                    .Select(x => x.MemberCategory.TotalLoan).ToList();
                 int totalLimit = 0;
                 
                 foreach (var val in categoryLimitList)
