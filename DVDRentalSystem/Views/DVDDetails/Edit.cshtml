@@ -34,11 +34,11 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LoanStatus, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AgeRestricted, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.LoanStatus)
-                    @Html.ValidationMessageFor(model => model.LoanStatus, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.AgeRestricted)
+                    @Html.ValidationMessageFor(model => model.AgeRestricted, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>

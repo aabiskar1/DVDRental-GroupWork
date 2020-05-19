@@ -21,7 +21,7 @@ namespace DVDRentalSystem.Controllers
             {
                 return View();
             }
-            var data = dbCon.CastMembers.Include("DVDDetails").Include("CastDetails")
+            var data = dbCon.CastMembers.Include("DVDDetails").Include("CastDetails").Include("Loans")
                 .Where(x => x.CastDetails.LastName == LastName);
             return View(data);
 

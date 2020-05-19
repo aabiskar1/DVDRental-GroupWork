@@ -4,15 +4,31 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("asdasdasdasd");
+        };
+    </script>
+
+}
+
+<h2>Loan Services</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.DVDDetails.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoanType.LoanTypeName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Members.FirstName)
@@ -24,6 +40,9 @@
             @Html.DisplayNameFor(model => model.ReturnDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.LoanCharge)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.FineAmount)
         </th>
         <th>
@@ -32,38 +51,57 @@
         <th>
             @Html.DisplayNameFor(model => model.ActualReturnedDate)
         </th>
+        <th>
+           Loan total charge
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DVDDetails.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Members.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IssueDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReturnDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FineAmount)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CopyId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ActualReturnedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.LoanId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.LoanId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.LoanId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LoanType.LoanTypeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Members.FirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.IssueDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReturnDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.LoanCharge)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.FineAmount)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CopyId)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ActualReturnedDate)
+    </td>
+    <td>
+       @{var dvdCharge = item.LoanCharge;
+
+           double days = (Convert.ToDateTime(item.ReturnDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
+           var finalCharge = days * dvdCharge;
+        }
+        <p>@finalCharge</p>
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.LoanId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.LoanId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.LoanId })
+    </td>
+</tr>
+    }
+
 
 </table>

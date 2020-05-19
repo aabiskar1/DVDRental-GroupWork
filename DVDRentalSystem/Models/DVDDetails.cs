@@ -17,7 +17,7 @@ namespace DVDRentalSystem.Models
         public string Name { get; set; }
         public string Genre { get; set; }
 
-        public bool LoanStatus { get; set; }
+        public bool AgeRestricted { get; set; }
 
         public int NumberOfCopies { get; set; }
         public DateTime ReleaseDate { get; set; }

@@ -15,21 +15,31 @@ namespace DVDRentalSystem.Models
 
             public int DVDDetailsId { get; set; }
 
+
+
             public DateTime IssueDate { get; set; }
             public DateTime ReturnDate { get; set; }
+            public int LoanTypeId { get; set; }
+            public int LoanCharge { get; set; }
             public int FineAmount{ get; set; }
 
             public int MemberId { get; set; }
             public int CopyId { get; set; }
 
 
-        public Nullable<DateTime> ActualReturnedDate { get; set; }
+             public Nullable<DateTime> ActualReturnedDate { get; set; }
 
             [ForeignKey("MemberId")]
             public virtual Member Members { get; set; }
 
             [ForeignKey("DVDDetailsId")]
             public virtual DVDDetails DVDDetails { get; set; }
-        }
-    
+
+
+            [ForeignKey("LoanTypeId")]
+            public virtual LoanType LoanType { get; set; }
+
+
+    }
+
 }

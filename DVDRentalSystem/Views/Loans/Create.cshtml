@@ -6,11 +6,20 @@
 
 <h2>Create</h2>
 
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.Message");
+        };
+    </script>
 
-@using (Html.BeginForm()) 
+}
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Loan</h4>
         <hr />
@@ -40,6 +49,22 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.LoanTypeId, "LoanTypeId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("LoanTypeId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.LoanTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoanCharge, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LoanCharge, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LoanCharge, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.FineAmount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.FineAmount, new { htmlAttributes = new { @class = "form-control" } })
@@ -58,8 +83,10 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CopyId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
+
                 @Html.EditorFor(model => model.CopyId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CopyId, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
@@ -77,6 +104,8 @@
             </div>
         </div>
     </div>
+
+ 
 }
 
 <div>

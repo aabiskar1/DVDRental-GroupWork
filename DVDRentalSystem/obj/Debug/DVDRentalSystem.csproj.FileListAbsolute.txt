@@ -163,3 +163,7 @@ C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRental
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus7.resources
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus8.resources
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus9.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus10.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus11.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus12.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus13.resources
