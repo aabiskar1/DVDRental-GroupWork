@@ -23,7 +23,7 @@ namespace DVDRentalSystem.Models
         [ForeignKey("DVDDetailsId")]
         public virtual DVDDetails DVDDetails { get; set; }
 
-       
+
         public int CastDetailsId { get; set; }
         [ForeignKey("CastDetailsId")]
         public virtual CastDetails CastDetails { get; set; }

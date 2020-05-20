@@ -238,10 +238,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AllDVDLoanSortedController.cs" />
     <Compile Include="Controllers\CastDetailsController.cs" />
     <Compile Include="Controllers\CastMembersController.cs" />
     <Compile Include="Controllers\DVDDetailsController.cs" />
     <Compile Include="Controllers\DVDMembersController.cs" />
+    <Compile Include="Controllers\DVDNotLoanedInAMonthController.cs" />
     <Compile Include="Controllers\FilterByAlphabaticalMembersController.cs" />
     <Compile Include="Controllers\FilterByLoanCopyNumberController.cs" />
     <Compile Include="Controllers\FilterByLoanCopyNumberPostController.cs" />
@@ -332,6 +334,10 @@
     <Compile Include="Migrations\202005201034419_dvddetailsloanstatus15.cs" />
     <Compile Include="Migrations\202005201034419_dvddetailsloanstatus15.Designer.cs">
       <DependentUpon>202005201034419_dvddetailsloanstatus15.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201456079_dvdloanstatus.cs" />
+    <Compile Include="Migrations\202005201456079_dvdloanstatus.Designer.cs">
+      <DependentUpon>202005201456079_dvdloanstatus.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -437,11 +443,6 @@
     <Content Include="Views\DVDMembers\Edit.cshtml" />
     <Content Include="Views\DVDMembers\Index.cshtml" />
     <Content Include="Views\FilterByProducerDVDReleaseCast\filterProducerByDVDCast.cshtml" />
-    <Content Include="Views\Producers\Create.cshtml" />
-    <Content Include="Views\Producers\Delete.cshtml" />
-    <Content Include="Views\Producers\Details.cshtml" />
-    <Content Include="Views\Producers\Edit.cshtml" />
-    <Content Include="Views\Producers\Index.cshtml" />
     <Content Include="Views\FilterByLoanCopyNumber\filterByLoanCopyNumber.cshtml" />
     <Content Include="Views\FilterByLoanCopyNumberPost\filterByLoanCopyNumberPost.cshtml" />
     <Content Include="Views\FilterByLoanCopyNumberPost\filterByLoanCopyNumberFinal.cshtml" />
@@ -467,10 +468,17 @@
     <Content Include="Views\DVDDetails\Index.cshtml" />
     <Content Include="Views\RemoveYearOldDVD\removeAllDVD.cshtml" />
     <Content Include="Views\MembersBorrowedDVDInMonth\BorrowedDVDInLastMonth.cshtml" />
+    <Content Include="Views\Producers\Create.cshtml" />
+    <Content Include="Views\Producers\Delete.cshtml" />
+    <Content Include="Views\Producers\Details.cshtml" />
+    <Content Include="Views\Producers\Edit.cshtml" />
+    <Content Include="Views\Producers\Index.cshtml" />
+    <Content Include="Views\DVDNotLoanedInAMonth\DVDNotBorrowedInMonth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\AllDVDLoanSorted\" />
     <Folder Include="Views\UserAndRoles\" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005201034419_dvddetailsloanstatus15.resx">
       <DependentUpon>202005201034419_dvddetailsloanstatus15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201456079_dvdloanstatus.resx">
+      <DependentUpon>202005201456079_dvdloanstatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
