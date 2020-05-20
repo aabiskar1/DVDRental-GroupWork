@@ -253,6 +253,7 @@
     <Compile Include="Controllers\LoanTypesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberCategoriesController.cs" />
+    <Compile Include="Controllers\MembersBorrowedDVDInMonthController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ProducersController.cs" />
     <Compile Include="Controllers\RemoveYearOldDVDController.cs" />
@@ -465,6 +466,7 @@
     <Content Include="Views\DVDDetails\Edit.cshtml" />
     <Content Include="Views\DVDDetails\Index.cshtml" />
     <Content Include="Views\RemoveYearOldDVD\removeAllDVD.cshtml" />
+    <Content Include="Views\MembersBorrowedDVDInMonth\BorrowedDVDInLastMonth.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

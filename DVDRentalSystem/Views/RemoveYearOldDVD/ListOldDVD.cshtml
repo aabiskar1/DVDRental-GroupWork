@@ -4,15 +4,16 @@
     ViewBag.Title = "ListOldDVD";
 }
 
-<h2>ListOldDVD</h2>
+<h2>Old DVD Stock</h2>
 
 <table class="table">
     <tr>
         <th>
             DVD Name
         </th>
+
         <th>
-            DVD Release Date
+            DVD Stocked Date
         </th>
         <th>
             DVD Genre
@@ -128,7 +129,7 @@
 
                     </td>
                     <td>
-                        @dvds.ReleaseDate
+                        @dvds.StockedDate
 
                     </td>
                     <td>
@@ -136,7 +137,9 @@
 
                     </td>
                     <td>
-                        @dvds.CoverImagePath
+
+                        <img src="@Url.Content(dvds.CoverImagePath)" width="100px" height="150px" />
+                       
 
                     </td>
                 </tr>
@@ -160,6 +163,5 @@
         
     <form action="/RemoveYearOldDVD/removeAllDVD" method="POST">
         <input hidden type="text" name="valueINeed" value="@stringOfList" />
-        <input type="submit" value="Remove All Button" />
+        <input type="submit" value="Remove All" />
     </form>
-    @Html.ActionLink("REMOVE ALL", "removeAllDVD", "RemoveYearOldDVD", new { reportID = "asdasd" }, null);
