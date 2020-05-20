@@ -1,0 +1,165 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "ListOldDVD";
+}
+
+<h2>ListOldDVD</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            DVD Name
+        </th>
+        <th>
+            DVD Release Date
+        </th>
+        <th>
+            DVD Genre
+        </th>
+        <th>
+            DVD Cover
+        </th>
+
+        <th></th>
+
+
+
+    </tr>
+
+    <tr>
+        @{
+            List<int> numberList = new List<int>();
+            List<int> unqiueLoanedList = new List<int>();
+            List<int> allDVDList = new List<int>();
+            List<int> retunedMovieList = new List<int>();
+
+            List<int> notOnLoanList = new List<int>();
+            List<int> finalRemovableDVDList = new List<int>();
+
+            List<int> toSendList = new List<int>();
+
+
+            foreach (var DvdId in Model.Loans)
+            {
+
+                numberList.Add(DvdId.DVDDetailsId);
+
+
+            }
+            unqiueLoanedList = numberList.Distinct().ToList();
+
+            int movieToatalCount = 0;
+            int returnedMovieCount = 0;
+
+            foreach (var m in unqiueLoanedList)
+            {
+
+                foreach (var l in Model.Loans)
+                {
+                    if (m == l.DVDDetailsId)
+                    {
+                        movieToatalCount++;
+                    }
+                    if (m == l.DVDDetailsId && l.ActualReturnedDate != null)
+                    {
+                        returnedMovieCount++;
+                    }
+
+
+                }
+
+                if (movieToatalCount == returnedMovieCount)
+                {
+                    retunedMovieList.Add(m);
+
+
+                }
+
+                movieToatalCount = 0;
+                returnedMovieCount = 0;
+
+
+            }
+
+            foreach (var dvd in Model.DVDDetails)
+            {
+                allDVDList.Add(dvd.DVDDetailsId);
+            }
+
+            foreach (var dvds in allDVDList)
+            {
+                foreach (var loaned in unqiueLoanedList)
+                {
+                    if (!unqiueLoanedList.Contains(dvds))
+                    {
+                        notOnLoanList.Add(dvds);
+                    }
+                    {
+
+                    }
+                }
+            }
+
+            finalRemovableDVDList = notOnLoanList.Union(retunedMovieList).ToList();
+
+
+
+        }
+
+
+
+
+
+        @foreach (var dvds in Model.DVDDetails)
+        {
+            foreach (var item in finalRemovableDVDList)
+            {
+
+                DateTime daysValue = dvds.StockedDate;
+
+                double days = (Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(dvds.StockedDate)).TotalDays;
+                if (item == dvds.DVDDetailsId && days > 365.00)
+                {
+                    toSendList.Add(item);
+                <tr>
+                    <td>
+                        @dvds.Name
+
+                    </td>
+                    <td>
+                        @dvds.ReleaseDate
+
+                    </td>
+                    <td>
+                        @dvds.Genre
+
+                    </td>
+                    <td>
+                        @dvds.CoverImagePath
+
+                    </td>
+                </tr>
+
+            }
+        }
+
+    }     </tr>
+
+
+    </table>
+
+       @{
+
+           string stringOfList = "";
+           foreach (var x in toSendList) {
+               stringOfList = stringOfList + x + ",";
+           }
+
+       }
+        
+    <form action="/RemoveYearOldDVD/removeAllDVD" method="POST">
+        <input hidden type="text" name="valueINeed" value="@stringOfList" />
+        <input type="submit" value="Remove All Button" />
+    </form>
+    @Html.ActionLink("REMOVE ALL", "removeAllDVD", "RemoveYearOldDVD", new { reportID = "asdasd" }, null);

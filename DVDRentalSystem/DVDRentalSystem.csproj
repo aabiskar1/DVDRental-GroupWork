@@ -255,6 +255,7 @@
     <Compile Include="Controllers\MemberCategoriesController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ProducersController.cs" />
+    <Compile Include="Controllers\RemoveYearOldDVDController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReturnDVDController.cs" />
     <Compile Include="Controllers\ReturnDVDPostController.cs" />
@@ -323,12 +324,21 @@
     <Compile Include="Migrations\202005190627495_dvddetailsloanstatus13.Designer.cs">
       <DependentUpon>202005190627495_dvddetailsloanstatus13.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005200936111_dvddetailsloanstatus14.cs" />
+    <Compile Include="Migrations\202005200936111_dvddetailsloanstatus14.Designer.cs">
+      <DependentUpon>202005200936111_dvddetailsloanstatus14.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005201034419_dvddetailsloanstatus15.cs" />
+    <Compile Include="Migrations\202005201034419_dvddetailsloanstatus15.Designer.cs">
+      <DependentUpon>202005201034419_dvddetailsloanstatus15.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUserRoleViewModel.cs" />
     <Compile Include="Models\CastDetails.cs" />
     <Compile Include="Models\CastMembers.cs" />
     <Compile Include="Models\DVDDetails.cs" />
+    <Compile Include="Models\DVDLoanMergeModel.cs" />
     <Compile Include="Models\DVDMember.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Loan.cs" />
@@ -434,11 +444,6 @@
     <Content Include="Views\FilterByLoanCopyNumber\filterByLoanCopyNumber.cshtml" />
     <Content Include="Views\FilterByLoanCopyNumberPost\filterByLoanCopyNumberPost.cshtml" />
     <Content Include="Views\FilterByLoanCopyNumberPost\filterByLoanCopyNumberFinal.cshtml" />
-    <Content Include="Views\DVDDetails\Create.cshtml" />
-    <Content Include="Views\DVDDetails\Delete.cshtml" />
-    <Content Include="Views\DVDDetails\Details.cshtml" />
-    <Content Include="Views\DVDDetails\Edit.cshtml" />
-    <Content Include="Views\DVDDetails\Index.cshtml" />
     <Content Include="Views\Loans\Create.cshtml" />
     <Content Include="Views\Loans\Delete.cshtml" />
     <Content Include="Views\Loans\Details.cshtml" />
@@ -453,6 +458,13 @@
     <Content Include="Views\ReturnDVDPost\CopyIdList.cshtml" />
     <Content Include="Views\ReturnDVDPost\ShowReturnDetails.cshtml" />
     <Content Include="Views\FilterByAlphabaticalMembers\filterByName.cshtml" />
+    <Content Include="Views\RemoveYearOldDVD\ListOldDVD.cshtml" />
+    <Content Include="Views\DVDDetails\Create.cshtml" />
+    <Content Include="Views\DVDDetails\Delete.cshtml" />
+    <Content Include="Views\DVDDetails\Details.cshtml" />
+    <Content Include="Views\DVDDetails\Edit.cshtml" />
+    <Content Include="Views\DVDDetails\Index.cshtml" />
+    <Content Include="Views\RemoveYearOldDVD\removeAllDVD.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -517,6 +529,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005190627495_dvddetailsloanstatus13.resx">
       <DependentUpon>202005190627495_dvddetailsloanstatus13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005200936111_dvddetailsloanstatus14.resx">
+      <DependentUpon>202005200936111_dvddetailsloanstatus14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005201034419_dvddetailsloanstatus15.resx">
+      <DependentUpon>202005201034419_dvddetailsloanstatus15.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

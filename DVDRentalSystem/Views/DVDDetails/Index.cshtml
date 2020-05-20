@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.StockedDate)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -27,6 +30,9 @@
             @Html.DisplayNameFor(model => model.ReleaseDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.isDeleted)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Length)
         </th>
         <th>
@@ -36,34 +42,40 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Genre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AgeRestricted)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NumberOfCopies)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ReleaseDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Length)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CoverImagePath)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DVDDetailsId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DVDDetailsId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DVDDetailsId })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.StockedDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Genre)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AgeRestricted)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NumberOfCopies)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ReleaseDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.isDeleted)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Length)
+    </td>
+    <td>
+        <img src="@Url.Content(item.CoverImagePath)" width="100px" height="150px" />
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = item.DVDDetailsId }) |
+        @Html.ActionLink("Details", "Details", new { id = item.DVDDetailsId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.DVDDetailsId })
+    </td>
+</tr>
 }
 
 </table>

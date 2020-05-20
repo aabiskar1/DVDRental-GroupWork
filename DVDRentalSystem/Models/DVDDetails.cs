@@ -8,12 +8,17 @@ using System.Web;
 
 namespace DVDRentalSystem.Models
 {
+
     public class DVDDetails
     {
+        public DVDDetails()
+        {
+            this.StockedDate = DateTime.Now;
+        }
         [Key]
         public int DVDDetailsId { get; set; }
         [Required]
-
+        public DateTime StockedDate { get; set;}
         public string Name { get; set; }
         public string Genre { get; set; }
 
@@ -21,6 +26,8 @@ namespace DVDRentalSystem.Models
 
         public int NumberOfCopies { get; set; }
         public DateTime ReleaseDate { get; set; }
+
+        public bool isDeleted { get; set; }
 
         public int Length { get; set; }
         [NotMapped]

@@ -41,7 +41,7 @@ namespace DVDRentalSystem.Controllers
         // GET: Loans/Create
         public ActionResult Create()
         {
-            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name");
+            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x =>x.isDeleted == false), "DVDDetailsId", "Name");
             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName");
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName");
             return View();
@@ -90,7 +90,7 @@ namespace DVDRentalSystem.Controllers
                 if (loanedCopiesCount >= totalLimit)
                 {
                     ViewBag.Message = String.Format("Member not eligible to loan more DVD");
-                    ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+                    ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
                     ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
                     ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
                     return View(loan);
@@ -133,7 +133,7 @@ namespace DVDRentalSystem.Controllers
 
 
 
-                            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+                            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
                             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
                             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
                             return RedirectToAction("Index");
@@ -145,7 +145,7 @@ namespace DVDRentalSystem.Controllers
 
 
 
-                            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+                            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
                             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
                             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
                             return View(loan);
@@ -171,7 +171,7 @@ namespace DVDRentalSystem.Controllers
                 }
             }
 
-            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
             return View(loan);
@@ -189,7 +189,7 @@ namespace DVDRentalSystem.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
             return View(loan);
@@ -208,7 +208,7 @@ namespace DVDRentalSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails, "DVDDetailsId", "Name", loan.DVDDetailsId);
+            ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x => x.isDeleted == false), "DVDDetailsId", "Name");
             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName", loan.LoanTypeId);
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName", loan.MemberId);
             return View(loan);
