@@ -1,4 +1,5 @@
 ﻿using DataContext.Data;
+using DVDRentalSystem.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -155,10 +156,29 @@ namespace DVDRentalSystem.Controllers
 
             Models.DVDDetails dvdD = new Models.DVDDetails();
 
+
+            IList<DVDDetails> sendData = new List<DVDDetails>();
+
+
+
             foreach (var z in allGoodList) {
 
                 finalSendingList = db.DVDDetails.Where(x => x.DVDDetailsId == z).ToList();
+                foreach (var data in finalSendingList) {
 
+                    DVDDetails dvdDet = new DVDDetails();
+                    dvdDet.DVDDetailsId = data.DVDDetailsId;
+                    dvdDet.Name = data.Name;
+                    dvdDet.Genre = data.Genre;
+                    dvdDet.ReleaseDate = data.ReleaseDate;
+                    dvdDet.Length = data.Length;
+                    dvdDet.CoverImagePath = data.CoverImagePath;
+                    dvdDet.NumberOfCopies = data.NumberOfCopies;
+                    dvdDet.AgeRestricted = data.AgeRestricted;
+                    dvdDet.StockedDate = data.StockedDate;
+                    dvdDet.isDeleted = data.isDeleted;
+                    sendData.Add(dvdDet);
+                }
                 
 
             }
@@ -167,7 +187,7 @@ namespace DVDRentalSystem.Controllers
 
 
 
-            return View(finalSendingList);
+            return View(sendData);
         }
     }
 }

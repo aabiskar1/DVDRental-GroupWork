@@ -1,0 +1,86 @@
+﻿@Html.AntiForgeryToken()
+
+
+
+<div class="DVDDetailsContainer">
+
+    <form action="@Url.Action("Create", "DVDDetailsShared")" id="formCreate" enctype="multipart/form-data" method="post">
+
+        @Html.Partial("_DVDDetails")
+        <div class="dvUploadCaptcha">
+
+        </div>
+    </form>
+
+</div>
+
+
+
+
+<div class="producerContainer">
+
+    <form action="@Url.Action("Create", "ProducersShared")" id="formCreate" enctype="multipart/form-data" method="post">
+
+        @Html.Partial("_Producer")
+        <div class="dvUploadCaptcha">
+
+        </div>
+    </form>
+
+</div>
+
+
+<div class="CastDetailsContainer">
+
+    <form action="@Url.Action("Create", "CastDetailsShared")" id="formCreate" enctype="multipart/form-data" method="post">
+
+        @Html.Partial("_CastDetails")
+        <div class="dvUploadCaptcha">
+
+        </div>
+    </form>
+
+</div>
+
+<div class="CastMemberContainer">
+
+    <form action="@Url.Action("Create", "CastMembersShared")" id="formCreate" enctype="multipart/form-data" method="post">
+
+        @Html.Partial("_CastMember")
+        <div class="dvUploadCaptcha">
+
+        </div>
+    </form>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    $('.producerContainer #formCreate').submit(function (event) {
+
+    });
+</script>
+
+<script>
+    $('.DVDDetailsContainer #formCreate').submit(function (event) {
+
+    });
+</script>
+<script>
+    $('.CastDetailsContainer #formCreate').submit(function (event) {
+
+    });
+</script>
+
+

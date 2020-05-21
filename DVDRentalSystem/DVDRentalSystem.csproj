@@ -240,8 +240,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AllDVDLoanSortedController.cs" />
     <Compile Include="Controllers\CastDetailsController.cs" />
+    <Compile Include="Controllers\CastDetailsSharedController.cs" />
     <Compile Include="Controllers\CastMembersController.cs" />
+    <Compile Include="Controllers\CastMembersSharedController.cs" />
     <Compile Include="Controllers\DVDDetailsController.cs" />
+    <Compile Include="Controllers\DVDDetailsSharedController.cs" />
+    <Compile Include="Controllers\DVDEnterController.cs" />
     <Compile Include="Controllers\DVDMembersController.cs" />
     <Compile Include="Controllers\DVDNotLoanedInAMonthController.cs" />
     <Compile Include="Controllers\FilterByAlphabaticalMembersController.cs" />
@@ -258,6 +262,7 @@
     <Compile Include="Controllers\MembersBorrowedDVDInMonthController.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Controllers\ProducersController.cs" />
+    <Compile Include="Controllers\ProducersSharedController.cs" />
     <Compile Include="Controllers\RemoveYearOldDVDController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ReturnDVDController.cs" />
@@ -474,6 +479,31 @@
     <Content Include="Views\Producers\Edit.cshtml" />
     <Content Include="Views\Producers\Index.cshtml" />
     <Content Include="Views\DVDNotLoanedInAMonth\DVDNotBorrowedInMonth.cshtml" />
+    <Content Include="Views\Shared\_DVDDetails.cshtml" />
+    <Content Include="Views\ProducersShared\Create.cshtml" />
+    <Content Include="Views\ProducersShared\Delete.cshtml" />
+    <Content Include="Views\ProducersShared\Details.cshtml" />
+    <Content Include="Views\ProducersShared\Edit.cshtml" />
+    <Content Include="Views\ProducersShared\Index.cshtml" />
+    <Content Include="Views\Shared\_Producer.cshtml" />
+    <Content Include="Views\DVDEnter\Master.cshtml" />
+    <Content Include="Views\DVDDetailsShared\Create.cshtml" />
+    <Content Include="Views\DVDDetailsShared\Delete.cshtml" />
+    <Content Include="Views\DVDDetailsShared\Details.cshtml" />
+    <Content Include="Views\DVDDetailsShared\Edit.cshtml" />
+    <Content Include="Views\DVDDetailsShared\Index.cshtml" />
+    <Content Include="Views\Shared\_CastDetails.cshtml" />
+    <Content Include="Views\CastDetailsShared\Create.cshtml" />
+    <Content Include="Views\CastDetailsShared\Delete.cshtml" />
+    <Content Include="Views\CastDetailsShared\Details.cshtml" />
+    <Content Include="Views\CastDetailsShared\Edit.cshtml" />
+    <Content Include="Views\CastDetailsShared\Index.cshtml" />
+    <Content Include="Views\Shared\_CastMember.cshtml" />
+    <Content Include="Views\CastMembersShared\Create.cshtml" />
+    <Content Include="Views\CastMembersShared\Delete.cshtml" />
+    <Content Include="Views\CastMembersShared\Details.cshtml" />
+    <Content Include="Views\CastMembersShared\Edit.cshtml" />
+    <Content Include="Views\CastMembersShared\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
