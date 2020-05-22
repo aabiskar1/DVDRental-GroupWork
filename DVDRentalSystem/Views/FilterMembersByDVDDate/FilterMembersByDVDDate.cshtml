@@ -24,6 +24,8 @@
         <th> DVD Name</th>
         <th> DVD Genre</th>
         <th>Number of Copies</th>
+        <th>Copy ID</th>
+        <th>Actual Returned Date</th>
 
     </tr>
     @{int qty = 0;
@@ -38,7 +40,7 @@
 
 
         double days = (Convert.ToDateTime(currentDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
-        if (@days < 31 && item.ActualReturnedDate ==null )
+        if (@days < 31 )
 
         {
             // for first object
@@ -47,27 +49,37 @@
                 int dvdid = item.DVDDetails.DVDDetailsId;
                 { prevId = item.DVDDetails.DVDDetailsId.ToString(); }
                 { qty++; }
-                <tr>
-                    <td>
-                        <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
+<tr>
+    <td>
+        <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
 
-                    </td>
-
-
+    </td>
 
 
-                    <td>   @Html.DisplayFor(modelItem => item.DVDDetails.Name)</td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DVDDetails.Genre)
-                    </td>
-                    <td>
-                        <p id="@dvdid">@qty</p>
-
-                    </td>
 
 
-                </tr>
+    <td>   @Html.DisplayFor(modelItem => item.DVDDetails.Name)</td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.DVDDetails.Genre)
+    </td>
+    <td>
+        <p id="@dvdid">@qty</p>
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CopyId)
+
+
+    </td>
+
+    <td>
+        @Html.DisplayFor(modelItem => item.ActualReturnedDate)
+
+    </td>
+
+
+</tr>
 
             }
             else
@@ -121,6 +133,7 @@
                                 <p id="@dvdid2"> @qty </p>
                             </div>
                         </td>
+                     
 
 
                     </tr>

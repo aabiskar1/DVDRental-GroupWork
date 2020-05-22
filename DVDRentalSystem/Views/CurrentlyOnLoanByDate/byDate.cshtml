@@ -1,0 +1,89 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+
+
+<table class="table">
+
+
+
+
+    @foreach (var uniq in ViewBag.UniqueDateList)
+    {
+
+        <tr>
+            <td colspan="8"> <h1>@uniq.Date  </h1></td>
+
+            @{
+                List<int> MemberIDlist = new List<int>();
+            }
+
+            @foreach (var item in Model)
+            {
+
+
+                if (item.IssueDate.Date == uniq.Date)
+                {
+                    MemberIDlist.Add(item.Members.MemberId);
+
+                }
+
+            }
+          
+            </tr>
+
+            foreach (var item in Model)
+            {
+
+
+                if (item.IssueDate.Date == uniq.Date)
+                {
+           
+
+        <tr>
+            <td>
+
+                <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="150" />
+            </td>
+            <td> @item.DVDDetails.Name</td>
+            <td> @item.IssueDate</td>
+            <td>Copy ID: @item.CopyId</td>
+            <td>Member: @item.Members.FirstName @item.Members.LastName</td>
+
+
+
+
+
+
+
+
+        </tr>
+                
+               
+
+
+
+            }
+        
+
+
+
+
+       
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+    }
+
+</table>

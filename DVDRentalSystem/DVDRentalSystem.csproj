@@ -243,6 +243,7 @@
     <Compile Include="Controllers\CastDetailsSharedController.cs" />
     <Compile Include="Controllers\CastMembersController.cs" />
     <Compile Include="Controllers\CastMembersSharedController.cs" />
+    <Compile Include="Controllers\CurrentlyOnLoanByDateController.cs" />
     <Compile Include="Controllers\DVDDetailsController.cs" />
     <Compile Include="Controllers\DVDDetailsSharedController.cs" />
     <Compile Include="Controllers\DVDEnterController.cs" />
@@ -504,6 +505,7 @@
     <Content Include="Views\CastMembersShared\Details.cshtml" />
     <Content Include="Views\CastMembersShared\Edit.cshtml" />
     <Content Include="Views\CastMembersShared\Index.cshtml" />
+    <Content Include="Views\CurrentlyOnLoanByDate\byDate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
