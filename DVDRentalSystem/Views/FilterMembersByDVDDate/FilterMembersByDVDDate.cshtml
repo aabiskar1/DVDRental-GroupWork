@@ -17,103 +17,36 @@
 
 @if (Model != null)
 {
-<table class="table">
-    <tr>
+    <table class="table">
+        <tr>
 
-        <th> DVD Cover</th>
-        <th> DVD Name</th>
-        <th> DVD Genre</th>
-        <th>Number of Copies</th>
-        <th>Copy ID</th>
-        <th>Actual Returned Date</th>
+            <th> DVD Cover</th>
+            <th> DVD Name</th>
+            <th> DVD Genre</th>
+            <th>Number of Copies</th>
 
-    </tr>
-    @{int qty = 0;
-        var currentDate = DateTime.Now;
-        var prevId = "";
+        </tr>
+        @{int qty = 0;
+            var currentDate = DateTime.Now;
+            var prevId = "";
 
-    }
+        }
 
-    @foreach (var item in Model)
-    {
-
-
-
-        double days = (Convert.ToDateTime(currentDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
-        if (@days < 31 )
-
+        @foreach (var item in Model)
         {
-            // for first object
-            if (@qty == 0)
+
+
+
+            double days = (Convert.ToDateTime(currentDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
+            if (@days < 31)
+
             {
-                int dvdid = item.DVDDetails.DVDDetailsId;
-                { prevId = item.DVDDetails.DVDDetailsId.ToString(); }
-                { qty++; }
-<tr>
-    <td>
-        <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
-
-    </td>
-
-
-
-
-    <td>   @Html.DisplayFor(modelItem => item.DVDDetails.Name)</td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.DVDDetails.Genre)
-    </td>
-    <td>
-        <p id="@dvdid">@qty</p>
-
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.CopyId)
-
-
-    </td>
-
-    <td>
-        @Html.DisplayFor(modelItem => item.ActualReturnedDate)
-
-    </td>
-
-
-</tr>
-
-            }
-            else
-            {
-                if (prevId.Equals(item.DVDDetails.DVDDetailsId.ToString()))
+                // for first object
+                if (@qty == 0)
                 {
-                    // paila ne die hard aile ne die hard
-                    { qty++; }
-                    {
-                        <script>
-                            document.getElementById(@prevId).innerHTML = @qty;
-                        </script>
-                    }
-                }
-                else
-                {
-                    //naya dvd
-                    {
-                        qty = 0;
-                    }
-                    int dvdid2 = item.DVDDetails.DVDDetailsId;
-
-
+                    int dvdid = item.DVDDetails.DVDDetailsId;
                     { prevId = item.DVDDetails.DVDDetailsId.ToString(); }
-                    {
-                        qty++;
-
-
-                    }
-                    {
-                        <script>
-                            document.getElementById(@prevId).innerHTML = @qty;
-                        </script>
-                    }
+                    { qty++; }
                     <tr>
                         <td>
                             <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
@@ -129,26 +62,80 @@
                             @Html.DisplayFor(modelItem => item.DVDDetails.Genre)
                         </td>
                         <td>
-                            <div>
-                                <p id="@dvdid2"> @qty </p>
-                            </div>
+                            <p id="@dvdid">@qty</p>
+
                         </td>
-                     
 
 
                     </tr>
 
-
                 }
+                else
+                {
+                    if (prevId.Equals(item.DVDDetails.DVDDetailsId.ToString()))
+                    {
+                        // paila ne die hard aile ne die hard
+                        { qty++; }
+                        {
+                            <script>
+                            document.getElementById(@prevId).innerHTML = @qty;
+                            </script>
+                        }
+                    }
+                    else
+                    {
+                        //naya dvd
+                        {
+                            qty = 0;
+                        }
+                        int dvdid2 = item.DVDDetails.DVDDetailsId;
+
+
+                        { prevId = item.DVDDetails.DVDDetailsId.ToString(); }
+                        {
+                            qty++;
+
+
+                        }
+                        {
+                            <script>
+                            document.getElementById(@prevId).innerHTML = @qty;
+                            </script>
+                        }
+                        <tr>
+                            <td>
+                                <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
+
+                            </td>
+
+
+
+
+                            <td>   @Html.DisplayFor(modelItem => item.DVDDetails.Name)</td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DVDDetails.Genre)
+                            </td>
+                            <td>
+                                <div>
+                                    <p id="@dvdid2"> @qty </p>
+                                </div>
+                            </td>
+
+
+                        </tr>
+
+
+                    }
+                }
+
             }
 
         }
 
-    }
 
 
 
 
-
-</table>
+    </table>
 }

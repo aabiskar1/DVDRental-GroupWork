@@ -36,5 +36,7 @@ namespace DataContext.Data
         public System.Data.Entity.DbSet<DVDRentalSystem.Models.DVDMember> DVDMembers { get; set; }
 
         public System.Data.Entity.DbSet<DVDRentalSystem.Models.LoanType> LoanTypes { get; set; }
+
+        public System.Data.Entity.DbSet<DVDRentalSystem.Models.RoleViewModel> RoleViewModels { get; set; }
     }
 }

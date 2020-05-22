@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Dynamic;
 
 namespace DVDRentalSystem.Models
 {
@@ -79,6 +80,9 @@ namespace DVDRentalSystem.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string RoleName { get; set; }
+
     }
 
     public class ResetPasswordViewModel
