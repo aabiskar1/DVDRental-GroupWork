@@ -4,78 +4,89 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+
+<h2>DVD Details</h2>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.StockedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Genre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AgeRestricted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NumberOfCopies)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.isDeleted)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Length)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CoverImagePath)
-        </th>
-        <th></th>
-    </tr>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StockedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CoverImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeRestricted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfCopies)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.isDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Length)
+            </th>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.StockedDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Name)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Genre)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.AgeRestricted)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.NumberOfCopies)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ReleaseDate)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.isDeleted)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Length)
-    </td>
-    <td>
-        <img src="@Url.Content(item.CoverImagePath)" width="100" height="150" />
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.DVDDetailsId }) |
-        @Html.ActionLink("Details", "Details", new { id = item.DVDDetailsId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.DVDDetailsId })
-    </td>
-</tr>
-}
+            <th></th>
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockedDate)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.CoverImagePath)" width="100" height="150" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeRestricted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfCopies)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isDeleted)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Length)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DVDDetailsId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DVDDetailsId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DVDDetailsId })
+                </td>
+            </tr>
+        }
 
 </table>

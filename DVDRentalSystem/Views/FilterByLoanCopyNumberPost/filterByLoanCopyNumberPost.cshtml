@@ -1,17 +1,23 @@
 ﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
 
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 @{
     ViewBag.Title = "Filter By Loan CopyNumber";
 }
-
-<h2>filterByLoanCopyNumberPost</h2>
+<h2>FILTER LOAN BY COMPY NUMBER (Movie Lists)</h2>
+<h4>Task 5 </h4>
 
 <form action="/FilterByLoanCopyNumberPost/filterByLoanCopyNumberFinal" method="get">
-    @Html.DropDownList("CopyId", new SelectList(ViewBag.CopyId, "CopyId"), null, null)
-    <button type="submit">Submit</button>
+    @Html.DropDownList("CopyId", new SelectList(ViewBag.CopyId, "CopyId"), htmlAttributes: new { @class = "btn btn-primary" })
+    <button class="btn btn-primary" type="submit">Submit</button>
 
 
 
 
 
 </form>
+

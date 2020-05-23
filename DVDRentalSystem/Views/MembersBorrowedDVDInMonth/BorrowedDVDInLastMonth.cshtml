@@ -3,100 +3,104 @@
 @{
     ViewBag.Title = "BorrowedDVDInLastMonth";
 }
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 
-<h2>Members that stopped borrowing in last 31 days</h2>
+<h2>MEMBERS THAT STOPPED BORROWNING DVD IN 31 days</h2>
+<h4> Task 12 </h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Name
-        </th>
-        <th>
-            Address
-        </th>
-        <th>
-            DVD Name
-        </th>
-        <th>
-            Date of Issue
-        </th>
-        <th>
-            Copy ID
-        </th>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                DVD Name
+            </th>
+            <th>
+                Date of Issue
+            </th>
+            <th>
+                Copy ID
+            </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.ActualReturnedDate)
-        </th>
-        <th>
-            Last Loan on
-        </th>
-        <th></th>
-    </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualReturnedDate)
+            </th>
+            <th>
+                Last Loan on
+            </th>
+           
+        </tr>
+        </thead>
 
 
- 
 
-    @foreach (var dvdValue in ViewBag.DVDList)
-    {
-        double days = (Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(dvdValue.IssueDate)).TotalDays;
-        int intDays = (int)Math.Round(days);
-        if (days > 31.00)
+
+        @foreach (var dvdValue in ViewBag.DVDList)
         {
-
-            foreach (var memberValue in ViewBag.MemberList)
+            double days = (Convert.ToDateTime(DateTime.Now) - Convert.ToDateTime(dvdValue.IssueDate)).TotalDays;
+            int intDays = (int)Math.Round(days);
+            if (days > 31.00)
             {
-                if (dvdValue.MemberId == memberValue.MemberId)
+
+                foreach (var memberValue in ViewBag.MemberList)
                 {
-
-                    foreach (var detailsDVD in ViewBag.DVDDetailsList)
+                    if (dvdValue.MemberId == memberValue.MemberId)
                     {
-                        if (detailsDVD.DVDDetailsId == dvdValue.DVDDetailsId)
+
+                        foreach (var detailsDVD in ViewBag.DVDDetailsList)
                         {
-                           
-                    <tr>
-                        <td>
-                            @memberValue.FirstName
-                            @memberValue.LastName
+                            if (detailsDVD.DVDDetailsId == dvdValue.DVDDetailsId)
+                            {
 
-                        </td>
-                        <td>
-                            @memberValue.Address
-                        </td>
-                        <td>   
-                            @detailsDVD.Name
+                                <tr>
+                                    <td>
+                                        @memberValue.FirstName
+                                        @memberValue.LastName
 
-                        </td>
-                        <td>
-                            @dvdValue.IssueDate
-                        </td>
-                        <td>
-                            @dvdValue.CopyId
-                        </td>
-                        <td>
-                            @dvdValue.ActualReturnedDate
-                        </td>
+                                    </td>
+                                    <td>
+                                        @memberValue.Address
+                                    </td>
+                                    <td>
+                                        @detailsDVD.Name
+
+                                    </td>
+                                    <td>
+                                        @dvdValue.IssueDate
+                                    </td>
+                                    <td>
+                                        @dvdValue.CopyId
+                                    </td>
+                                    <td>
+                                        @dvdValue.ActualReturnedDate
+                                    </td>
 
 
 
 
-                        <td>
-                            @intDays Days Ago
+                                    <td>
+                                        @intDays Days Ago
 
-                        </td>
+                                    </td>
 
-                        <td>
-                        </td>
+                                   
 
-                    </tr>
+                                </tr>
+                            }
+
                         }
-                        
                     }
                 }
             }
         }
-    }
 
 </table>

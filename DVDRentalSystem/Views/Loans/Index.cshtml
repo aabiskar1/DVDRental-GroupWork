@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 
 
 @if (ViewBag.Message != null)
@@ -16,49 +21,55 @@
 }
 
 <h2>Loan Services</h2>
+<h6>Task 6</h6>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DVDDetails.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoanType.LoanTypeName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Members.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IssueDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReturnDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LoanCharge)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FineAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CopyId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ActualReturnedDate)
-        </th>
-        <th>
-           Loan total charge
-        </th>
-        <th></th>
-    </tr>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DVDDetails.Name)
+            </th>
+            <th>
+                Loan Type
+            </th>
+            <th>
+                Member ID
+            </th>
+            <th>
+                Member Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IssueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoanCharge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FineAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CopyId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ActualReturnedDate)
+            </th>
+            <th>
+                Loan total charge
+            </th>
 
-    @foreach (var item in Model)
-    {
+        </tr>
+        </thead>
+
+        @foreach (var item in Model)
+        {
 <tr>
     <td>
         @Html.DisplayFor(modelItem => item.DVDDetails.Name)
@@ -67,7 +78,11 @@
         @Html.DisplayFor(modelItem => item.LoanType.LoanTypeName)
     </td>
     <td>
+        @Html.DisplayFor(modelItem => item.Members.MemberId)
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.Members.FirstName)
+        @Html.DisplayFor(modelItem => item.Members.LastName)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.IssueDate)
@@ -88,10 +103,10 @@
         @Html.DisplayFor(modelItem => item.ActualReturnedDate)
     </td>
     <td>
-       @{var dvdCharge = item.LoanCharge;
+        @{var dvdCharge = item.LoanCharge;
 
-           double days = (Convert.ToDateTime(item.ReturnDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
-           var finalCharge = days * dvdCharge;
+            double days = (Convert.ToDateTime(item.ReturnDate) - Convert.ToDateTime(item.IssueDate)).TotalDays;
+            var finalCharge = days * dvdCharge;
         }
         <p>@finalCharge</p>
     </td>
@@ -101,7 +116,7 @@
         @Html.ActionLink("Delete", "Delete", new { id = item.LoanId })
     </td>
 </tr>
-    }
+        }
 
 
 </table>

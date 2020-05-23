@@ -4,15 +4,21 @@
     ViewBag.Title = "FilterTitleByCount";
 }
 
-<h2>FilterTitleByCount</h2>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 
+<h2>Filter Movie Title My Actor's Last Name</h2>
+<h4>Task 2</h4>
 
 
 
 
 <form action="/FilterLastNameByShelves/FilterTitleByCount" method="get">
     @Html.DropDownList("LastName", new SelectList(ViewBag.LastName, "LastName", "LastName"), null, null)
-    <button type="submit">Submit</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
 
@@ -27,7 +33,8 @@
 
 
 
-    <table class="table">
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
         <tr>
 
             <th>
@@ -35,39 +42,44 @@
             </th>
 
             <th> DVD Cover</th>
-            <th> Artist First Name</th>
-            <th> Artist Last Name</th>
+            <th> Actor's Name</th>
+ 
+            <th> Number of Copies</th>
+         
 
         </tr>
-
+        </thead>
         @foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DVDDetails.Name)
-        </td>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+    </td>
 
 
 
 
-        <td>
-            <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100px" height="100px" />
-        </td>
+    <td>
+        <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="120" />
+    </td>
 
 
-        <td>
-            @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
-        </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+        @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+    </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.CastDetails.LastName)
-        </td>
+ 
+    <td>
+        @Html.DisplayFor(modelItem => item.DVDDetails.NumberOfCopies)
+    </td>
 
 
-    </tr>
+</tr>
+       
         }
 
 
 
-    </table>
+</table>
 }

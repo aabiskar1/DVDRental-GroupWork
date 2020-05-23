@@ -20,25 +20,26 @@ namespace DVDRentalSystem.Controllers
         }
 
         [HttpGet]
-        public ActionResult filterByLoanCopyNumberPost(string copyid)
+        public ActionResult filterByLoanCopyNumberPost()
         {
 
 
-            int numberOfCopies = 0;
+            List<int> numberOfCopies = new List<int>();
             dvdName = HttpContext.Request["DVDDetails"];
 
-            Debug.WriteLine(dvdName + " first asdasd");
-            var numberOfCopiesList = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName).Select(x => x.DVDDetails.NumberOfCopies);
+            var numberOfCopiesList = dbCon.Loans.Include("DVDDetails")
+                .Where(x => x.DVDDetails.Name == dvdName)
+                .Select(x => x.CopyId);
             //var finalData = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName).Where(x => x.CopyId == int.Parse(copyid)).ToList();
             foreach (var val in numberOfCopiesList)
             {
-                numberOfCopies = val;
+                numberOfCopies.Add(val);
 
             }
 
 
 
-            var totalNumberList = Enumerable.Range(1, numberOfCopies).ToList();
+            var totalNumberList = numberOfCopies;
 
 
             //var finalList = totalNumberList.Except(totalNumberList1);

@@ -4,12 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<h2>Cast Members</h2>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table  table-striped table-bordered table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.CastDetails.FirstName)
@@ -21,6 +25,7 @@
     </tr>
 
 @foreach (var item in Model) {
+<thead class="bg-primary">
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
@@ -29,11 +34,12 @@
             @Html.DisplayFor(modelItem => item.DVDDetails.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CastMemberId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CastMemberId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CastMemberId })
+            @Html.ActionLink("Edit", "Edit", new { id = item.CastMemberId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.CastMemberId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.CastMemberId })
         </td>
     </tr>
-}
+    </thead>
+    }
 
 </table>

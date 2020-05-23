@@ -4,9 +4,11 @@
     ViewBag.Title = "CopyIdList";
 }
 
-<h2>DVD Copy on Loan List</h2>
+<h2>DVD COPY ID</h2>
+<h4>Task 7</h4>
+
 
 <form action="/ReturnDVDPost/ShowReturnDetails" method="get">
-    @Html.DropDownList("CopyId", new SelectList(ViewBag.CopyId, "CopyId"), null, null)
-    <button type="submit">Submit</button>
-    </form>
+    @Html.DropDownList("CopyId", new SelectList(ViewBag.CopyId, "CopyId"), htmlAttributes: new { @class = "btn btn-primary" })
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DVDRentalSystem.Models;
 using System.Collections.Generic;
+using DataContext.Data;
 
 namespace DVDRentalSystem.Controllers
 {
@@ -242,6 +243,8 @@ namespace DVDRentalSystem.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+ 
 
         //
         // GET: /Account/ForgotPasswordConfirmation

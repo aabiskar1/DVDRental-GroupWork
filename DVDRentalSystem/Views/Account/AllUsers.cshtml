@@ -1,0 +1,12 @@
+﻿@model IEnumerable<DVDRentalSystem.Models.RoleViewModel>
+
+@{
+    ViewBag.Title = "AllUsers";
+}
+
+<h2>AllUsers</h2>
+
+@foreach (var User in ViewBag.UsersData) { 
+
+    <p>@User.Email</p>
+}

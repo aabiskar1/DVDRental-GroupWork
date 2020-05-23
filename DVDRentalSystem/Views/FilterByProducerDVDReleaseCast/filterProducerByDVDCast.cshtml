@@ -4,85 +4,94 @@
     ViewBag.Title = "filterProducerByDVDCast";
 }
 
-<h2>filterProducerByDVDCast</h2>
 
+    <style>
+        .bg-primary {
+            background-color: dodgerblue;
+        }
+    </style>
 
+<h2>FILTER PRODUCER BY DVD RELEASE DATE AND CAST MEMBER LAST NAME</h2>
+
+<h4>Task 4</h4>
 
 @if (Model != null)
 {
 
-<table class="table">
-    <tr>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
 
-        <th>
-            DvdName
-        </th>
+            <th>
+                DvdName
+            </th>
 
-        <th>
-            Release date
-        </th>
+            <th>
+                Release date
+            </th>
 
-        <th>
-            Producer Name
-        </th>
-        <th>
-            Studio
-        </th>
+            <th>
+                Producer Name
+            </th>
+            <th>
+                Studio
+            </th>
 
-        <th>
-            Cast Name
-        </th>
+            <th>
+                Cast Name
+            </th>
 
-        <th></th>
-    </tr>
-    @{
-        var count = 0;
-        var previous = 0;
+            <th></th>
+        </tr>
+        </thead>
+        @{
+            var count = 0;
+            var previous = 0;
 
-    }
-
-    @{System.Diagnostics.Debug.WriteLine(Model.ToList().Count());
-    }
-
-    @foreach (var item in Model)
-    {
-       
-        if (@count == 0)
-        {
-
-            { count++; }
-            { previous = item.DVDDetails.DVDDetailsId; }
-            System.Diagnostics.Debug.WriteLine("it is in if");
-            <tr>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.DVDDetails.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                    @Html.DisplayFor(modelItem => item.LastName)
-
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Studio_name)
-
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
-                    @Html.DisplayFor(modelItem => item.CastDetails.LastName)
-                </td>
-
-            </tr>
         }
-        else
+
+        @{System.Diagnostics.Debug.WriteLine(Model.ToList().Count());
+        }
+
+        @foreach (var item in Model)
         {
-            System.Diagnostics.Debug.WriteLine(previous + "**" + item.DVDDetails.DVDDetailsId + "im the condition");
-            { count++; }
-            if (previous == item.DVDDetails.DVDDetailsId)
+
+            if (@count == 0)
             {
+
+                { count++; }
+                { previous = item.DVDDetails.DVDDetailsId; }
+                System.Diagnostics.Debug.WriteLine("it is in if");
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.LastName)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Studio_name)
+
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+                        @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+                    </td>
+
+                </tr>
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine(previous + "**" + item.DVDDetails.DVDDetailsId + "im the condition");
+                { count++; }
+                if (previous == item.DVDDetails.DVDDetailsId)
+                {
                 <td></td>
                 <td></td>
                 <td></td>
@@ -91,36 +100,36 @@
                     @Html.DisplayFor(modelItem => item.FirstName)
                     @Html.DisplayFor(modelItem => item.LastName)
                 </td>
-       
+
 
 
             }
             else
             {
                 previous = item.DVDDetails.DVDDetailsId;
-                            <tr>
+                <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.DVDDetails.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                    @Html.DisplayFor(modelItem => item.LastName)
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDDetails.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DVDDetails.ReleaseDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                        @Html.DisplayFor(modelItem => item.LastName)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Studio_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Studio_name)
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
-                    @Html.DisplayFor(modelItem => item.CastDetails.LastName)
-                </td>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CastDetails.FirstName)
+                        @Html.DisplayFor(modelItem => item.CastDetails.LastName)
+                    </td>
 
-            </tr>
+                </tr>
             }
 
 
@@ -129,5 +138,5 @@
     }
 
 
-</table>
+    </table>
 }

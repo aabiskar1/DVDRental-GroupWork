@@ -4,104 +4,111 @@
     ViewBag.Title = "filterByName";
 }
 
-<h2>Filter Members with Alphabetical Order</h2>
+<h2>FILTER MEMBERS BY ALPHABETICAL ORDER BY FIRST NAME</h2>
+<h4>Task 8</h4>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
+
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                Member Name
+            </th>
+            <th>
+                Membership Category
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Date of Birth
+            </th>
+            <th>
+                DVD  on Loan (If any)
+            </th>
+
+            <th>
+                Message
+            </th>
 
 
-<table class="table">
-    <tr>
-        <th>
-            Member Name
-        </th>
-        <th>
-            Membership Category
-        </th>
-        <th>
-            Address
-        </th>
-        <th>
-            Phone
-        </th>
-        <th>
-            Date of Birth
-        </th>
-        <th>
-            DVD  on Loan (If any)
-        </th>
-
-        <th>
-            Message
-        </th>
-
-        <th></th>
-    </tr>
+        </tr>
+        </thead>
 
 
 
 
 
-    @{int count = 0; }
+        @{int count = 0; }
 
         @foreach (var item in Model.Members)
         {
             count = 0;
-<tr>
-    <td>
-        @item.FirstName
-        @item.LastName
-    </td>
-    <td>
-        @item.MemberCategory.Name
-    </td>
-    <td> @item.Address </td>
-    <td>
-        @item.Phone
-    </td>
-    <td>
-        @item.DateOfBirth
-    </td>
+            <tr>
+                <td>
+                    @item.FirstName
+                    @item.LastName
+                </td>
+                <td>
+                    @item.MemberCategory.Name
+                </td>
+                <td> @item.Address </td>
+                <td>
+                    @item.Phone
+                </td>
+                <td>
+                    @item.DateOfBirth
+                </td>
 
-    @{foreach (var x in Model.Loans)
-        {
-            if (item.MemberId == x.MemberId && x.ActualReturnedDate == null)
-            {
-                count++;
-            }
+                @{foreach (var x in Model.Loans)
+                    {
+                        if (item.MemberId == x.MemberId && x.ActualReturnedDate == null)
+                        {
+                            count++;
+                        }
 
+                    }
+
+
+
+                }
+                <td> @count   </td>
+
+                @{var totalLoan = @item.MemberCategory.TotalLoan;}
+
+
+
+
+                @{
+                    if (count > totalLoan)
+                    {
+                        <td>
+                            Loaned DVD count excceds allowed limit
+
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                        </td>
+                    }
+
+
+                }
+
+
+
+
+            </tr>
         }
 
 
 
-    }
-    <td> @count   </td>
-
-    @{var totalLoan = @item.MemberCategory.TotalLoan;}
-
-
-  
-
-    @{
-        if (count > totalLoan)
-        {
-            <td>
-               Loaned DVD count excceds allowed limit
-
-            </td>
-        }
-        else
-        {
-            <td>
-            </td>
-        }
-
-
-    }
-
-
-
-
-</tr>
-        }
-
-
-
-    </table>
+</table>

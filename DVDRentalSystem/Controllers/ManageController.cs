@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DVDRentalSystem.Models;
+using DataContext.Data;
+using System.Collections.Generic;
 
 namespace DVDRentalSystem.Controllers
 {
@@ -16,8 +18,10 @@ namespace DVDRentalSystem.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+
         public ManageController()
         {
+          
         }
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -49,6 +53,10 @@ namespace DVDRentalSystem.Controllers
                 _userManager = value;
             }
         }
+
+
+
+
 
         //
         // GET: /Manage/Index
@@ -194,6 +202,8 @@ namespace DVDRentalSystem.Controllers
             return View(model);
         }
 
+   
+
         //
         // POST: /Manage/RemovePhoneNumber
         [HttpPost]
@@ -217,7 +227,52 @@ namespace DVDRentalSystem.Controllers
         // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
+            ApplicationUserManager UserKoList;
+            UserKoList = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            List<ApplicationUser> listOf = new List<ApplicationUser>();
+            ApplicationRoleManager applicationRoleManager = HttpContext.GetOwinContext().GetUserManager<ApplicationRoleManager>(); ;
+            ApplicationRole role = applicationRoleManager.FindByName("Assistant");
+
+            foreach (var user in UserKoList.Users) {
+                var userRow = user.Roles.First();
+
+                if (userRow.RoleId == role.Id) 
+                {
+                    listOf.Add(user);
+                }
+            }
+
+            var v = UserKoList.Users .ToList();
+
+
+
+           
+
+
+
+
+            ViewBag.UsersList = listOf;
+
             return View();
+
+
+
+            //========================
+
+         
+
+
+
+            foreach (var user in UserKoList.Users)
+            {
+                if (User.IsInRole("Assistant"))
+                {
+                    v.Add(user);
+                }
+            }
+
+
+
         }
 
         //
@@ -225,11 +280,17 @@ namespace DVDRentalSystem.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
+
+
         {
             if (!ModelState.IsValid)
             {
+
                 return View(model);
             }
+
+           
+
             var result = await UserManager.ChangePasswordAsync(User.Identity.GetUserId(), model.OldPassword, model.NewPassword);
             if (result.Succeeded)
             {
@@ -373,6 +434,16 @@ namespace DVDRentalSystem.Controllers
             return false;
         }
 
+
+        public ActionResult AllUsers()
+        {
+
+
+            return View();
+
+
+        }
+
         public enum ManageMessageId
         {
             AddPhoneSuccess,
@@ -384,6 +455,33 @@ namespace DVDRentalSystem.Controllers
             Error
         }
 
-#endregion
+
+
+        // POST: /Manage/ChangePassword
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeAssistantPassword(string Id, string NewPassword)
+
+
+        {
+            ApplicationUserManager applicationUserManager = HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); ;
+            ApplicationUser user = applicationUserManager.FindById(Id);
+        
+     
+
+            user.PasswordHash = applicationUserManager.PasswordHasher.HashPassword(NewPassword);
+            var result = await applicationUserManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                return RedirectToAction("Index", new { Message = ManageMessageId.Error });
+            }
+       
+            return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+
+        }
+
+       
+        #endregion
     }
 }

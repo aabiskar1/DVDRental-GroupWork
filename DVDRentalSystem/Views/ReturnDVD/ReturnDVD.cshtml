@@ -4,11 +4,12 @@
     ViewBag.Title = "ReturnDVD";
 }
 
-<h2>ReturnDVD</h2>
+<h2>DVD RETURN </h2>
+<h4>Task 7</h4>
 
 <form action="/ReturnDVDPost/CopyIdList" method="get">
-    @Html.DropDownList("DVDDetails", new SelectList(ViewBag.MovieLists, null, null), null, null)
-    <button type="submit">Submit</button>
+    @Html.DropDownList("DVDDetails", new SelectList(ViewBag.MovieLists, null, null),  htmlAttributes: new { @class = "btn btn-primary" })
+    <button class="btn btn-primary" type="submit">Submit</button>
 
 
 

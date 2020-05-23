@@ -3,31 +3,38 @@
 @{
     ViewBag.Title = "Filter By Loan CopyNumber";
 }
-
-<h2>Filter By Loan CopyNumber</h2>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
+<h2>FILTER LOAN BY COMPY NUMBER (Movie Lists)</h2>
+<h4>Task 5 </h4>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
 
-        <th>
-            Member Name
-        </th>
-        <th>
-            Date of Issue
-        </th>
+            <th>
+                Member Name
+            </th>
+            <th>
+                Date of Issue
+            </th>
 
-        <th>
-            Due Date
-        </th>
-        <th> Actual Returned Date</th>
-        <th> DVD Name</th>
+            <th>
+                Due Date
+            </th>
+            <th> Actual Returned Date</th>
+            <th> DVD Name</th>
 
 
 
-    </tr>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -56,3 +63,12 @@
     }
 
 </table>
+
+<script type="text/javascript">
+    var stateObj = { foo: "bar" };
+
+    window.onload = function () {
+        history.replaceState(stateObj, "page 2", "https://localhost:44381/FilterByLoanCopyNumberPost/filterByLoanCopyNumberFinal");
+        return false;
+    };
+</script>

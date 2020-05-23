@@ -1,7 +1,13 @@
 ﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
+    <style>
+        .bg-primary {
+            background-color: dodgerblue;
+        }
+    </style>
 
-
-    <table class="table">
+<h2> LOANED DVD BY DATE</h2>
+<h4> Task 11</h4>
+    <table class="table  table-striped table-bordered table-hover">
 
 
 
@@ -10,7 +16,7 @@
         {
 
             <tr>
-                <td colspan="8"> <h1>@uniq.Date  </h1></td>
+                <td colspan="8"> <h1>@uniq.Date.ToString("MM/dd/yyyy")  </h1></td>
 
                 @{
                     List<int> MemberIDlist = new List<int>();

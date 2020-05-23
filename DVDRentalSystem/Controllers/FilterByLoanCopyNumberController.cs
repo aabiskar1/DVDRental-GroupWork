@@ -20,15 +20,18 @@ namespace DVDRentalSystem.Controllers
         public ActionResult filterByLoanCopyNumber(string dvdName, string copyNumber )
         {
             int numberOfCopies = 0;
-            var numberOfCopiesList = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName).Select(x => x.DVDDetails.NumberOfCopies);
+            var numberOfCopiesList = dbCon.Loans.Include("DVDDetails")
+                .Where(x => x.DVDDetails.Name == dvdName)
+                .Select(x => x.DVDDetails.NumberOfCopies);
             foreach (var val in numberOfCopiesList)
             {
                 numberOfCopies = val;
 
             }
 
-            var totalNumberList = Enumerable.Range(1, 20).ToList();
-            var LoanedDVDsList = dbCon.Loans.Include("DVDDetails").Where(x => x.DVDDetails.Name == dvdName);
+            var totalNumberList = Enumerable.Range(1, numberOfCopies).ToList();
+            var LoanedDVDsList = dbCon.Loans.Include("DVDDetails")
+                .Where(x => x.DVDDetails.Name == dvdName);
             var movieList = dbCon.DVDDetails.Select(x => x.Name);
 
 

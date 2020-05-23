@@ -5,12 +5,16 @@
     Layout = "~/Views/Shared/_CastDetails.cshtml";
 }
 
-<h2>Index</h2>
-
+<h2>Cast Details</h2>
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table  table-striped table-bordered table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)

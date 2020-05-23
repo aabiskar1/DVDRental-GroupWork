@@ -4,36 +4,44 @@
     ViewBag.Title = "ShowReturnDetails";
 }
 
-<h2>ShowReturnDetails</h2>
+<h2>DVD RETURN SUMMARY</h2>
+<h4>Task 7</h4>
 
+<style>
+    .bg-primary {
+        background-color: dodgerblue;
+    }
+</style>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
-<table class="table">
-    <tr>
+<table class="table  table-striped table-bordered table-hover">
+    <thead class="bg-primary">
+        <tr>
 
-        <th>
-            DVD Title
-        </th>
-        <th>
-            Member Name
-        </th>
+            <th>
+                DVD Title
+            </th>
+            <th>
+                Member Name
+            </th>
 
-        <th>
-            Issue Date
-        </th>
+            <th>
+                Issue Date
+            </th>
 
-        <th> Return Date</th>
-        <th> Actual Return Date</th>
+            <th> Return Date</th>
+            <th> Actual Return Date</th>
 
-        <th>Standard Charge</th>
+            <th>Standard Charge</th>
 
-        <th>Fine Amount</th>
+            <th>Fine Amount</th>
 
 
 
-    </tr>
+        </tr>
+    </thead>
 
     @foreach (var item in Model)
     {
@@ -96,12 +104,12 @@
             <td>
             </td>
         </tr>
-         }
-    </table>
+    }
+</table>
 
 
 <form action="/ReturnDVDPost/ReturnDVDFinal" method="get">
-    <button type="submit">Return DVD</button>
+    <button class="btn btn-primary" type="submit">Return DVD</button>
 
 </form>
 
