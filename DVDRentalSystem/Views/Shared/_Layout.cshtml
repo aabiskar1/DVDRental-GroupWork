@@ -97,9 +97,10 @@
 <body>
 
     <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> ☰</a>
         @if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
         {<h2 style="padding-left:10px">TABLES</h2>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> ☰</a>
+
             <a href="../Loans/Index">Loans</a>
             <a href="../LoanTypes/Index">Loan Types</a>
             <a href="../Members/index">Members</a>
@@ -117,17 +118,17 @@
         @if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
         {
             <a href="../FilterMembersByDVDDate/FilterMembersByDVDDate">Task 3</a>
-        <a href="../FilterByProducerDVDReleaseCast/filterProducerByDVDCast">Task 4</a>
-        <a href="../FilterByLoanCopyNumber/filterByLoanCopyNumber">Task 5</a>
-        <a href="../Loans/index">Task 6</a>
-        <a href="../ReturnDVD/ReturnDVD">Task 7</a>
-        <a href="../FilterByAlphabaticalMembers/filterByName">Task 8</a>
-        <a href="../DVDEnter/Master">Task 9</a>
-        <a href="../RemoveYearOldDVD/ListOldDVD">Task 10</a>
-        <a href="../CurrentlyOnLoanByDate/byDate">Task 11</a>
-        <a href="../MembersBorrowedDVDInMonth/BorrowedDVDInLastMonth">Task 12</a>
-        <a href="../DVDNotLoanedInAMonth/DVDNotBorrowedInMonth">Task 13</a>
-        <a href="../Manage/ChangePassword">Task 14</a>
+            <a href="../FilterByProducerDVDReleaseCast/filterProducerByDVDCast">Task 4</a>
+            <a href="../FilterByLoanCopyNumber/filterByLoanCopyNumber">Task 5</a>
+            <a href="../Loans/index">Task 6</a>
+            <a href="../ReturnDVD/ReturnDVD">Task 7</a>
+            <a href="../FilterByAlphabaticalMembers/filterByName">Task 8</a>
+            <a href="../DVDEnter/Master">Task 9</a>
+            <a href="../RemoveYearOldDVD/ListOldDVD">Task 10</a>
+            <a href="../CurrentlyOnLoanByDate/byDate">Task 11</a>
+            <a href="../MembersBorrowedDVDInMonth/BorrowedDVDInLastMonth">Task 12</a>
+            <a href="../DVDNotLoanedInAMonth/DVDNotBorrowedInMonth">Task 13</a>
+            <a href="../Manage/ChangePassword">Task 14</a>
         }
 
     </div>
