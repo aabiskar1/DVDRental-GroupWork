@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class FilterByLoanCopyNumberPostController : Controller
     {
         string dvdName ;

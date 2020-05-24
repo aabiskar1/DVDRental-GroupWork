@@ -1,46 +1,49 @@
-﻿@model IEnumerable<DVDRentalSystem.Models.Loan>
-
-@{
-    ViewBag.Title = "FilterMembersByDVDDate";
-}
-
-
-<style>
-    .bg-primary {
-        background-color: dodgerblue;
-    }
-</style>
-
-<h2>FILTER MEMBERS BY DVD LOAN DATE ON LAST 31 DAYS</h2>
-<h4> Task 3</h4>
-<form action="/FilterMembersByDVDDate/FilterMembersByDVDDate" method="get">
-    @Html.DropDownList("LastName", new SelectList(ViewBag.LastName, "LastName", "LastName"), htmlAttributes: new { @class = "btn btn-primary" })
-    <button  class="btn btn-primary" type="submit">Submit</button>
-</form>
-
-
-
-
-
-@if (Model != null)
+﻿@if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
 {
-    <table class="table  table-striped table-bordered table-hover">
-        <thead class="bg-primary">
-            <tr>
 
-                <th> DVD Cover</th>
-                <th> DVD Name</th>
-                <th> DVD Genre</th>
-                <th>Number of Copies</th>
+    @model IEnumerable<DVDRentalSystem.Models.Loan>
 
-            </tr>
+    {
+        ViewBag.Title = "FilterMembersByDVDDate";
+    }
+
+
+    <style>
+        .bg-primary {
+            background-color: dodgerblue;
+        }
+    </style>
+
+    <h2>FILTER MEMBERS BY DVD LOAN DATE ON LAST 31 DAYS</h2>
+    <h4> Task 3</h4>
+    <form action="/FilterMembersByDVDDate/FilterMembersByDVDDate" method="get">
+        @Html.DropDownList("LastName", new SelectList(ViewBag.LastName, "LastName", "LastName"), htmlAttributes: new { @class = "btn btn-primary" })
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+
+
+
+
+
+    if (Model != null)
+    {
+        <table class="table  table-striped table-bordered table-hover">
+            <thead class="bg-primary">
+                <tr>
+
+                    <th> DVD Cover</th>
+                    <th> DVD Name</th>
+                    <th> DVD Genre</th>
+                    <th>Number of Copies</th>
+
+                </tr>
             </thead>
             @{int qty = 0;
                 var currentDate = DateTime.Now;
                 var prevId = "";
 
             }
-     <br/>
+            <br />
             @foreach (var item in Model)
             {
 
@@ -58,7 +61,7 @@
                         { qty++; }
                         <tr>
                             <td>
-                                <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
+                                <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="140" />
 
                             </td>
 
@@ -113,7 +116,7 @@
                             }
                             <tr>
                                 <td>
-                                    <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="100" />
+                                    <img src="@Url.Content(item.DVDDetails.CoverImagePath)" width="100" height="140" />
 
                                 </td>
 
@@ -146,5 +149,10 @@
 
 
 
-</table>
+        </table>
+    }
+}
+else
+{
+    @Html.Partial("NoAccess")
 }

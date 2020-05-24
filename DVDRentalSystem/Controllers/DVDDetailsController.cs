@@ -12,6 +12,7 @@ using System.IO;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class DVDDetailsController : Controller
     {
         private DVDRentalSystemContext db = new DVDRentalSystemContext();

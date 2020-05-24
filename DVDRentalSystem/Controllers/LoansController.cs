@@ -12,6 +12,7 @@ using System.Diagnostics;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class LoansController : Controller
     {
         private DVDRentalSystemContext db = new DVDRentalSystemContext();

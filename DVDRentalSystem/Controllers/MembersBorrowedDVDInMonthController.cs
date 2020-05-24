@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class MembersBorrowedDVDInMonthController : Controller
     {
         private DVDRentalSystemContext db = new DVDRentalSystemContext();

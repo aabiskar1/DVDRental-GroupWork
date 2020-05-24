@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DataContext.Data;
 namespace DVDRentalSystem.Controllers
 {
+
     public class ReportController : Controller
     {
         private DVDRentalSystemContext dbCon = new DVDRentalSystemContext();

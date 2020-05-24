@@ -11,6 +11,7 @@ using DataContext.Data;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class MembersController : Controller
     {
         private DVDRentalSystemContext db = new DVDRentalSystemContext();

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace DVDRentalSystem.Controllers
 {
+    [Authorize(Roles = "Manager,Assistant")]
     public class ReturnDVDController : Controller
     {
         private DVDRentalSystemContext dbCon = new DVDRentalSystemContext();
