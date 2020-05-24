@@ -30,14 +30,15 @@
             .sidenav a {
                 padding: 8px 8px 8px 32px;
                 text-decoration: none;
-                font-size: 25px;
-                color: #818181;
+                font-size: 16px;
+           
+                color: #FFFF;
                 display: block;
                 transition: 0.3s;
             }
 
                 .sidenav a:hover {
-                    color: #f1f1f1;
+                    color: dodgerblue;
                 }
 
             .sidenav .closebtn {
@@ -61,7 +62,7 @@
         }
 
         .sidenav a {
-            font-size: 18px;
+            font-size: 5px;
         }
 
 
@@ -85,7 +86,7 @@
             color: #FFFFFF !important;
             text-decoration: none;
         }
-
+  
  
 
     </style>
@@ -95,12 +96,40 @@
 
 <body>
 
-    <div id="mySidenav" class="sidenav" style="background-color:darkgrey">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
+    <div id="mySidenav" class="sidenav">
+        @if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
+        {<h2 style="padding-left:10px">TABLES</h2>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> ☰</a>
+            <a href="../Loans/Index">Loans</a>
+            <a href="../LoanTypes/Index">Loan Types</a>
+            <a href="../Members/index">Members</a>
+            <a href="../MemberCategories/Index">Member Category</a>
+            <a href="../DVDDetails/Index">DVD Details</a>
+            <a href="../CastDetails">Cast Details</a>
+            <a href="../CastMembers">Cast Members</a>
+            <a href="../Producers">Producer</a>
+            <hr />
+        }
+        <h2 style="padding-left:10px">TASKS</h2>
+        <a href="../Report/FilterTitleByLastName">Task 1</a>
+        <a href="../FilterLastNameByShelves/FilterTitleByCount">Task 2</a>
+
+        @if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
+        {
+            <a href="../FilterMembersByDVDDate/FilterMembersByDVDDate">Task 3</a>
+        <a href="../FilterByProducerDVDReleaseCast/filterProducerByDVDCast">Task 4</a>
+        <a href="../FilterByLoanCopyNumber/filterByLoanCopyNumber">Task 5</a>
+        <a href="../Loans/index">Task 6</a>
+        <a href="../ReturnDVD/ReturnDVD">Task 7</a>
+        <a href="../FilterByAlphabaticalMembers/filterByName">Task 8</a>
+        <a href="../DVDEnter/Master">Task 9</a>
+        <a href="../RemoveYearOldDVD/ListOldDVD">Task 10</a>
+        <a href="../CurrentlyOnLoanByDate/byDate">Task 11</a>
+        <a href="../MembersBorrowedDVDInMonth/BorrowedDVDInLastMonth">Task 12</a>
+        <a href="../DVDNotLoanedInAMonth/DVDNotBorrowedInMonth">Task 13</a>
+        <a href="../Manage/ChangePassword">Task 14</a>
+        }
+
     </div>
     <!-- Use any element to open the sidenav -->
  
@@ -132,8 +161,7 @@
                                 <div class="navbar-collapse collapse">
                                     <ul class="nav navbar-nav">
                                         <li >@Html.ActionLink("Home", "Index", "Home")</li>
-                                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                                   
                                         @if (@User.IsInRole("Manager"))
                                         {
 
@@ -165,8 +193,8 @@
             function openNav() {
                 document.getElementById("menuBtn").style.display= "none"
              
-                document.getElementById("mySidenav").style.width = "250px";
-                document.getElementById("main").style.marginLeft = "250px";
+                document.getElementById("mySidenav").style.width = "280px";
+                document.getElementById("main").style.marginLeft = "280px";
             }
 
             function closeNav() {
@@ -178,5 +206,30 @@
         @Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")
         @RenderSection("scripts", required: false)
+
+
+
+            
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>
 </body>
+
+
+
+
 </html>

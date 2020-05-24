@@ -1,31 +1,162 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+    <style>
+        .zoom {
+            color:white;
+            background-color: dodgerblue;
+            transition: transform .2s; /* Animation */
+  
+    
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+            .zoom:hover {
+                background-color: #1eb0ff;
+                transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+            }
+        a:link {
+            text-decoration: none;
+        }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        a:visited {
+            text-decoration: none;
+        }
+    </style>
+
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1" style="text-decoration:none">
+
+                <a href="../Report/FilterTitleByLastName">
+
+                    <h3 style="color:white">FILTER TITLE BY ACTOR'S LAST NAME</h3>
+                    <h8 style="color:white">Task 1</h8>
+                </a>
+            </div>
+
+
+
+            <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                <a href="../FilterLastNameByShelves/FilterTitleByCount">
+                    <h3 style="color:white">DVD WITH ATLEAST 1 COPY ON SHELVES</h3>
+                    <h8 style="color:white">Task 2</h8>
+            </div>
+        </div>
+
+        @if (@User.IsInRole("Manager") || @User.IsInRole("Assistant"))
+        {
+            <div class="row">
+
+
+
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+
+                    <a href="../FilterMembersByDVDDate/FilterMembersByDVDDate">
+                        <h3 style="color:white">FILTER MEMBERS BY DVD LOAN DATE ON LAST 31 DAYS</h3>
+                        <h8 style="color:white">Task 3</h8>
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../FilterByProducerDVDReleaseCast/filterProducerByDVDCast">
+                        <h3 style="color:white">FILTER PRODUCER BY DVD RELEASE DATE AND CAST MEMBER LAST NAME</h3>
+                        <h8 style="color:white">Task 4</h8>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+
+                    <a href="../FilterByLoanCopyNumber/filterByLoanCopyNumber">
+                        <h3 style="color:white">FILTER LOAN BY COMPY NUMBER</h3>
+                        <h8 style="color:white">Task 5</h8>
+                        <br />
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../Loans/index">
+                        <h3 style="color:white"> ISSUE DVD COPY TO MEMBER</h3>
+                        <h8 style="color:white">Task 6</h8>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../ReturnDVD/ReturnDVD">
+                        <br />
+                        <br />
+
+                        <h2 style="color:white">RETURN A DVD</h2>
+                        <h8 style="color:white">Task 7</h8>
+                        <br />
+                        <br />
+                        <br />
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../FilterByAlphabaticalMembers/filterByName">
+                        <h3 style="color:white">FILTER MEMBERS BY ALPHABETICAL ORDER OF FIRST NAME</h3>
+                        <h8 style="color:white">Task 8</h8>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../DVDEnter/Master">
+                        <h3 style="color:white"> ADD DVD (ALL IN ONE FORM)</h3>
+                        <h8 style="color:white">Task 9</h8>
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../RemoveYearOldDVD/ListOldDVD">
+                        <h3 style="color:white">REMOVE YEAR OLD DVD STOCK</h3>
+                        <h8 style="color:white">Task 10</h8>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../CurrentlyOnLoanByDate/byDate">
+
+                        <br />
+                        <br />
+                        <h3 style="color:white">LOANED DVD BY DATE</h3>
+                        <h8 style="color:white">Task 11</h8>
+                        <br />
+                        <br />
+                        <br />
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../MembersBorrowedDVDInMonth/BorrowedDVDInLastMonth">
+                        <h3 style="color:white">MEMBERS THAT STOPPED BORROWNING DVD IN 31 days</h3>
+                        <h8 style="color:white">Task 12</h8>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../DVDNotLoanedInAMonth/DVDNotBorrowedInMonth">
+                        <h3 style="color:white">DVD NOT BORROWED IN A MONTH</h3>
+                        <h8 style="color:white">Task 13</h8>
+                </div>
+                <div class=" zoom jumbotron text-center col-sm-4 col-lg-offset-1">
+                    <a href="../Manage/ChangePassword">
+                        <h3 style="color:white">Change passwords</h3>
+                        <h8 style="color:white">Task 14</h8>
+                </div>
+            </div>
+
+
+        }
+
+
+
+
+
+
+
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>

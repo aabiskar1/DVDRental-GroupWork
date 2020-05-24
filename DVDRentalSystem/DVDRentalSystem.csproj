@@ -342,6 +342,14 @@
     <Compile Include="Migrations\202005221334130_dvddetailsloanstatus15.Designer.cs">
       <DependentUpon>202005221334130_dvddetailsloanstatus15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005241048529_dvddetailsloanstatus16.cs" />
+    <Compile Include="Migrations\202005241048529_dvddetailsloanstatus16.Designer.cs">
+      <DependentUpon>202005241048529_dvddetailsloanstatus16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005241119346_dvddetailsloanstatus17.cs" />
+    <Compile Include="Migrations\202005241119346_dvddetailsloanstatus17.Designer.cs">
+      <DependentUpon>202005241119346_dvddetailsloanstatus17.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUserRoleViewModel.cs" />
@@ -583,6 +591,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005221334130_dvddetailsloanstatus15.resx">
       <DependentUpon>202005221334130_dvddetailsloanstatus15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241048529_dvddetailsloanstatus16.resx">
+      <DependentUpon>202005241048529_dvddetailsloanstatus16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005241119346_dvddetailsloanstatus17.resx">
+      <DependentUpon>202005241119346_dvddetailsloanstatus17.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

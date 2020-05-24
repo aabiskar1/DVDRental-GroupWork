@@ -49,6 +49,10 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReturnDate)
             </th>
+
+            <th>
+                Loan Duration
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.LoanCharge)
             </th>
@@ -58,6 +62,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.CopyId)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.ActualReturnedDate)
             </th>
@@ -91,6 +96,9 @@
         @Html.DisplayFor(modelItem => item.ReturnDate)
     </td>
     <td>
+        @item.LoanType.LoanDays
+    </td>
+    <td>
         @Html.DisplayFor(modelItem => item.LoanCharge)
     </td>
     <td>
@@ -99,9 +107,12 @@
     <td>
         @Html.DisplayFor(modelItem => item.CopyId)
     </td>
+
+
     <td>
         @Html.DisplayFor(modelItem => item.ActualReturnedDate)
     </td>
+
     <td>
         @{var dvdCharge = item.LoanCharge;
 

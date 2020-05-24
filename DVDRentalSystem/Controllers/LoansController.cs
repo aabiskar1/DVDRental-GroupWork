@@ -45,6 +45,9 @@ namespace DVDRentalSystem.Controllers
             ViewBag.DVDDetailsId = new SelectList(db.DVDDetails.Where(x =>x.isDeleted == false), "DVDDetailsId", "Name");
             ViewBag.LoanTypeId = new SelectList(db.LoanTypes, "LoanTypeId", "LoanTypeName");
             ViewBag.MemberId = new SelectList(db.Members, "MemberId", "FirstName");
+          
+
+
             return View();
         }
 
@@ -129,7 +132,11 @@ namespace DVDRentalSystem.Controllers
                         if (days >= 6570)
                         {
                             Debug.WriteLine("Age restricted and user can buy");
-                            db.Loans.Add(loan);
+                            
+
+                            var returnDays = db.LoanTypes.Where(x => x.LoanTypeId == loan.LoanTypeId).Select(x => x.LoanDays).First();
+                            loan.ReturnDate = loan.IssueDate.AddDays(returnDays);
+                                db.Loans.Add(loan);
                             db.SaveChanges();
 
 

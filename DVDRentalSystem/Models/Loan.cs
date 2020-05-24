@@ -18,7 +18,7 @@ namespace DVDRentalSystem.Models
 
 
             public DateTime IssueDate { get; set; }
-            public DateTime ReturnDate { get; set; }
+            public DateTime? ReturnDate { get; set; }
             public int LoanTypeId { get; set; }
             public int LoanCharge { get; set; }
             public int FineAmount{ get; set; }
@@ -27,7 +27,7 @@ namespace DVDRentalSystem.Models
             public int CopyId { get; set; }
 
 
-             public Nullable<DateTime> ActualReturnedDate { get; set; }
+             public DateTime? ActualReturnedDate { get; set; }
 
             [ForeignKey("MemberId")]
             public virtual Member Members { get; set; }

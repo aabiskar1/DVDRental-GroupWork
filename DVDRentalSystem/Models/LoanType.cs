@@ -13,5 +13,6 @@ namespace DVDRentalSystem.Models
         [Required]
 
         public string LoanTypeName { get; set; }
+        public int LoanDays { get; set; }
     }
 }

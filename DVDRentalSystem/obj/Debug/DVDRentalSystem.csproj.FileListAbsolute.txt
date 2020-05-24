@@ -169,3 +169,5 @@ C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRental
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.csprojAssemblyReference.cache
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus14.resources
 C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus15.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus16.resources
+C:\Users\Legion\source\repos\DVDRentalSystem\DVDRentalSystem\obj\Debug\DVDRentalSystem.Migrations.dvddetailsloanstatus17.resources
